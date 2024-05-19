@@ -44,12 +44,16 @@ Tuner::~Tuner()
 
 void Tuner::disable()
 {
-    if (tunerManagerPtr && !m_tunerEnabled) { tunerManagerPtr->setTunerMode(false); }
+    // if the EFX is disabled but the tuner is still enabled, we must ensure the tuner Manager turns
+    // the mode off so it doesn't interfere with other display updates when preset is changed.
+    if (tunerManagerPtr && m_tunerEnabled) { tunerManagerPtr->setTunerMode(false); }
     AudioEffectWrapper::disable();
 }
 
 void Tuner::enable()
 {
+    // If the EFX is enabled and the tuner is still enabled, ensure the Tuner Manager turns
+    // the mode back on
     if (tunerManagerPtr && m_tunerEnabled) { tunerManagerPtr->setTunerMode(true); }
     AudioEffectWrapper::enable();
 }
