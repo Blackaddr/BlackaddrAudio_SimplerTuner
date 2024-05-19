@@ -42,6 +42,18 @@ Tuner::~Tuner()
 
 }
 
+void Tuner::disable()
+{
+    if (tunerManagerPtr && !m_tunerEnabled) { tunerManagerPtr->setTunerMode(false); }
+    AudioEffectWrapper::disable();
+}
+
+void Tuner::enable()
+{
+    if (tunerManagerPtr && m_tunerEnabled) { tunerManagerPtr->setTunerMode(true); }
+    AudioEffectWrapper::enable();
+}
+
 void Tuner::update(void)
 {
     if (!m_initialized) { init(0.1f); }

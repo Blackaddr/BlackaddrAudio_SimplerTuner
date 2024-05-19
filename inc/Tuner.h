@@ -61,6 +61,8 @@ public:
 
     //!s - START_USER_PUBLIC_MEMBERS - put your public members below this line before the matching END
     void bypass(bool byp) override;
+    void enable() override;
+    void disable() override;
     //!e - END_USER_PUBLIC_MEMBERS
 
 private:
