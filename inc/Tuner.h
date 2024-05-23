@@ -108,7 +108,8 @@ private:
     static constexpr float m_ALPHA = 0.95f;
     static constexpr float m_ONE_MINUS_ALPHA = 1.0f - m_ALPHA;
     float m_centsFiltered = 0.0f;
-    //SysPlatform::ElapsedMillis m_timer;
+    
+    void sendReports(float tunerCents, unsigned tunerNote);
 
     bool available( void );
     float probability( void );
